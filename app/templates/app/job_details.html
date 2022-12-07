@@ -1,0 +1,229 @@
+{% extends "app/base1.html" %}
+{% block content %}
+<section > 
+    <div  ></div>
+</section>
+
+    
+    <!-- JOB DETAILS START -->
+    {% if job %}
+    {% for i in job %}
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4 class="text-dark mb-3">{{i.jobname}}</h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 col-md-7">
+                    <div class="job-detail border rounded p-4">
+                        <div class="job-detail-content">
+                            <img src="{{i.job_logo.url}}" width="100" height="100" alt="" class="img-fluid float-left mr-md-3 mr-2 mx-auto d-block">
+                            <div class="job-detail-com-desc overflow-hidden d-block">
+                                <h4 class="mb-2"><a href="#" class="text-dark">{{i.jobname}}</a></h4>
+                                <p class="text-muted mb-0"><i class="mdi mdi-link-variant mr-2"></i>{{i.company_name}}</p>
+                                <p class="text-muted mb-0"><i class="mdi mdi-map-marker mr-2"></i>{{i.location}}</p>
+                            </div>
+                        </div>
+
+                        <!-- <div class="job-detail-desc mt-4">
+                            <p class="text-muted mb-3">Neque porro quisquam est qui dolorem ipsum dolor sit amet consectetur adipisci velit a quia non eius modi tempora incidunt ut labore dolore magnam aliquam quaerat voluptatem Nemo enim ipsam voluptatem quia voluptas sit aspernatur odit aut fugit sed quia consequuntur magni dolores eose.</p>
+
+                            <p class="text-muted mb-0">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praelsentium voluptatum at deleniti atque corrupti quos dolores quas molestias excepturi occaecati cupiditate non provident, similique sunt culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga Temporibus autem quibusdam aut Ut at as enim ad minima veniam quis nostrum that exercitationem ullam corporis suscipit laboriosam officiis debitis aut rerum necessitatibus.</p>
+                        </div> -->
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h5 class="text-dark mt-4">Job Description :</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="job-detail border rounded mt-2 p-4">
+                                <div class="job-detail-desc">
+                                    <p class="text-muted mb-3">{{i.job_context}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h5 class="text-dark mt-4">Qualification :</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="job-detail border rounded mt-2 p-4">
+                                <div class="job-detail-desc">
+                                    <div class="job-details-desc-item">
+                                        <div class="float-left mr-3">
+                                            <i class="mdi mdi-send text-primary"></i>
+                                        </div>
+                                        <p class="text-muted mb-2">{{i.qualification}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h5 class="text-dark mt-4">Primary Responsibilities :</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="job-detail border rounded mt-2 p-4">
+                                <div class="job-detail-desc">
+                                    <div class="job-details-desc-item">
+                                        <div class="float-left mr-3">
+                                            <i class="mdi mdi-send text-primary"></i>
+                                        </div>
+                                        <p class="text-muted mb-2">{{i.responsibilities}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-5 mt-4 mt-sm-0">
+                    <div class="job-detail border rounded p-4">
+                        <h5 class="text-muted text-center pb-2"><i class="mdi mdi-map-marker mr-2"></i>Location</h5>
+
+                        <div class="job-detail-location pt-4 border-top">
+                            <div class="job-details-desc-item">
+                                <div class="float-left mr-2">
+                                    <i class="mdi mdi-bank text-muted"></i>
+                                </div>
+                                <p class="text-muted mb-2">: {{i.location}}</p>
+                            </div>
+
+                            <div class="job-details-desc-item">
+                                <div class="float-left mr-2">
+                                    <i class="mdi mdi-email text-muted"></i>
+                                </div>
+                                <p class="text-muted mb-2">: {{i.company_email}}</p>
+                            </div>
+
+                            <div class="job-details-desc-item">
+                                <div class="float-left mr-2">
+                                    <i class="mdi mdi-web text-muted"></i>
+                                </div>
+                                <p class="text-muted mb-2">: {{i.company_website}}</p>
+                            </div>
+
+                            <div class="job-details-desc-item">
+                                <div class="float-left mr-2">
+                                    <i class="mdi mdi-cellphone-iphone text-muted"></i>
+                                </div>
+                                <p class="text-muted mb-2">: 1987 6543 21</p>
+                            </div>
+
+                            <div class="job-details-desc-item">
+                                <div class="float-left mr-2">
+                                    <i class="mdi mdi-currency-usd text-muted"></i>
+                                </div>
+                                <p class="text-muted mb-2">: $700 - $800/month</p>
+                            </div>
+
+                            <div class="job-details-desc-item">
+                                <div class="float-left mr-2">
+                                    <i class="mdi mdi-security text-muted"></i>
+                                </div>
+                                <p class="text-muted mb-2">: 1 To 3 Years.</p>
+                            </div>
+
+                            <div class="job-details-desc-item">
+                                <div class="float-left mr-2">
+                                    <i class="mdi mdi-clock-outline text-muted"></i>
+                                </div>
+                                <p class="text-muted mb-2">: 4 minutes ago</p>
+                            </div>
+
+                            <h6 class="text-dark f-17 mt-3 mb-0">Share Job :</h6>
+                            <ul class="social-icon list-inline mt-3 mb-0">
+                                <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
+                                <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-twitter"></i></a></li>
+                                <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-google-plus"></i></a></li>
+                                <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-whatsapp"></i></a></li>
+                                <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="job-detail border rounded mt-4 p-4">
+                        <h5 class="text-muted text-center pb-2"><i class="mdi mdi-clock-outline mr-2"></i>Opening Hours</h5>
+
+                        <div class="job-detail-time border-top pt-4">
+                            <ul class="list-inline mb-0">
+                                <li class="clearfix text-muted border-bottom pb-3">
+                                    <div class="float-left">Monday</div>
+                                    <div class="float-right">
+                                        <h5 class="f-13 mb-0">9AM - 7PM</h5>
+                                    </div>
+                                </li>
+
+                                <li class="clearfix text-muted border-bottom pb-3">
+                                    <div class="float-left">Tuesday</div>
+                                    <div class="float-right">
+                                        <h5 class="f-13 mb-0">9AM - 7PM</h5>
+                                    </div>
+                                </li>
+
+                                <li class="clearfix text-muted border-bottom pb-3">
+                                    <div class="float-left">Wednesday</div>
+                                    <div class="float-right">
+                                        <h5 class="f-13 mb-0">9AM - 7PM</h5>
+                                    </div>
+                                </li>
+
+                                <li class="clearfix text-muted border-bottom pb-3">
+                                    <div class="float-left">Thursday</div>
+                                    <div class="float-right">
+                                        <h5 class="f-13 mb-0">9AM - 7PM</h5>
+                                    </div>
+                                </li>
+
+                                <li class="clearfix text-muted border-bottom pb-3">
+                                    <div class="float-left">Friday</div>
+                                    <div class="float-right">
+                                        <h5 class="f-13 mb-0">9AM - 7PM</h5>
+                                    </div>
+                                </li>
+
+                                <li class="clearfix text-muted border-bottom pb-3">
+                                    <div class="float-left">Saturday</div>
+                                    <div class="float-right">
+                                        <h5 class="f-13 mb-0">6:30AM - 1PM</h5>
+                                    </div>
+                                </li>
+
+                                <li class="clearfix text-muted pb-0">
+                                    <div class="float-left">Sunday</div>
+                                    <div class="float-right">
+                                        <h5 class="f-13 mb-0">Closed</h5>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="job-detail border rounded mt-4">
+                        <a href="#" class="btn btn-primary btn-block">Apply For Job</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- JOB DETAILS END -->
+    {% endfor %}
+{% endif %}
+{% endblock %}

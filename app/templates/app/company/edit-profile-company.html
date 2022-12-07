@@ -1,0 +1,138 @@
+{% extends "app/company/base1.html" %}
+{% block content %}
+{% load static %}  
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">{{comp.firstname}} {{comp.lastname}} Profile </h1>  
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="rounded shadow bg-white p-4">
+                        <div class="custom-form">
+                            <div id="message3"></div>
+                            <form  class="contact-form" method="POST" action="{% url 'updateprofile' pk=request.session.id %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <h4 class="text-dark mb-3">Edit Profile :</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">First Name</label>
+                                            <input type="text" name="firstname" class="form-control resume" placeholder="" value="{{comp.firstname}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Last Name</label>
+                                            <input  type="text" name="lastname" class="form-control resume" placeholder="" value="{{comp.lastname}}">
+                                        </div>
+                                    </div>
+    
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Email</label>
+                                            <input  type="email" name="email" class="form-control resume" value="{{user.email}}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Phone Number</label>
+                                            <input id="number" name="contact" type="text" class="form-control resume" placeholder="I.e. - +880" value="{{comp.contact}}">
+                                        </div>
+                                    </div>
+    
+                                </div>
+    
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Website :</label>
+                                            <input id="" type="text" name="website" class="form-control resume" placeholder="l.e - khalidswe.com" value="{{comp.website}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Address</label>
+                                            <input id="" type="text" name="address" class="form-control resume" placeholder="I.e. - 19, Kallayanpur, Mirpur" value="{{comp.address}}">
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">State</label>
+                                            <input name="state" type="text" class="form-control resume" placeholder="I.e. - Mirpur" value="{{comp.state}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">City</label>
+                                            <input  name="city" type="text" class="form-control resume" placeholder="I.e. - Dhaka" value="{{comp.city}}">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Country</label>
+                                            <input  name="country" type="text" class="form-control resume" placeholder="I.e. - Bangladesh" value="{{comp.country}}">
+                                        </div>
+                                    </div>
+                                </div>                    
+    
+                                <div class="row mt-5">
+                                    <div class="col-12">
+                                        <h5 class="text-dark">About Us :</h5>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group app-label">
+                                            <textarea id="address" rows="4" name="about_us" class="form-control resume" placeholder="" value="{{comp.about_us}}"></textarea>
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-12">
+                                        <h5 class="text-dark">Services :</h5>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group app-label">
+                                            <textarea id="address" rows="4" name="services" class="form-control resume" placeholder="" value="{{comp.services}}"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item">
+                                                <div class="input-group mt-2 mb-2">
+                                                    <div class="custom-file">
+                                                        <input type="file" name="image" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                                        <label class="custom-file-label rounded"><i class="mdi mdi-cloud-upload mr-1"></i> Upload Company Logo</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+    
+                                            <li class="list-inline-item">
+                                                <h8 class="text-muted mb-0">Upload image Only</h8>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+    
+                                <div class="row">
+                                    <div class="col-lg-12 mt-2">
+                                        <button><a class="btn btn-primary">Save</a></button>   
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,216 @@
+{% extends "app/base1.html" %}
+{% block content %}
+    
+    <!-- Start home -->
+    <section class="bg-half page-next-level"> 
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <img src="{{can.profile_pic.url}}" height="150" alt="" class="d-block mx-auto shadow rounded-pill mb-4">
+                    <div class="text-center text-white">
+                        <h4 class="text-uppercase title mb-4">{{can.firstname}} {{can.lastname}}'s Profile</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end home -->
+
+    <!-- Profile Start -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5 class="text-dark">General Information :</h5>
+                </div>
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                            <div class="row mt-4">
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Name :</label>
+                                        <h6 class="text-dark">{{can.firstname}} {{can.lastname}}</h6>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Date of Birth :</label>
+                                        <h6 class="text-dark">{{can.dob}}</h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Gender :</label>
+                                        <h6 class="text-dark">{{can.gender}}</h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Marital Status :</label>
+                                        <h6 class="text-dark">{{can.maritual_status}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h5 class="text-dark">Contact Information :</h5>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">E-mail :</label>
+                                        <h6 class="text-dark">{{user.email}}</h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Phone :</label>
+                                        <h6 class="text-dark">{{can.contact}}</h6>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Address :</label>
+                                        <h6 class="text-dark">{{can.address}}</h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">City :</label>
+                                        <h6 class="text-dark">{{can.city}}</h6>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">State :</label>
+                                        <h6 class="text-dark">{{can.state}}</h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Country :</label>
+                                        <h6 class="text-dark">{{can.country}}</h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Portfolio :</label>
+                                        <h6 class="text-dark">{{can.portfolio}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h5 class="text-dark mt-5">Education Details :</h5>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">University/College :</label>
+                                        <h6 class="text-dark">{{can.uni_college1}}</h6>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Major/Non-Major :</label>
+                                        <h6 class="text-dark">{{can.major1}}</h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Degree/Certification :</label>
+                                        <h6 class="text-dark">{{can.degree1}}</h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">SCGPA :</label>
+                                        <h6 class="text-dark">{{can.sgpa1}}</h6>
+                                    </div>
+                                </div>
+                            </div>                
+                        </div>
+                </div>
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">University/College :</label>
+                                        <h6 class="text-dark">{{can.uni_college2}}</h6>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Major/Non-Major :</label>
+                                        <h6 class="text-dark">{{can.major2}}</h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Degree/Certification :</label>
+                                        <h6 class="text-dark">{{can.degree2}}</h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">SCGPA :</label>
+                                        <h6 class="text-dark">{{can.sgpa2}}</h6>
+                                    </div>
+                                </div>
+                            </div>                
+                        </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <h5 class="text-dark">Skills :</h5>
+                </div>
+                
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Skills :</label>
+                                        <h6 class="text-dark">{{can.skill}}</h6>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Addtional Skills :</label>
+                                        <h6 class="text-dark">{{can.additional_skill}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- PROFILE END -->
+{% endblock %}

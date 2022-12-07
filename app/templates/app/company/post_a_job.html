@@ -1,0 +1,165 @@
+{% extends "app/company/base1.html" %}
+{% block content %}
+{% load static %}  
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">POST A JOB </h1>  
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="rounded shadow bg-white p-4">
+                        <div class="custom-form">
+                            <div id="message3"></div>
+                            <form  class="contact-form" method="POST" action="{% url 'postajob' pk=request.session.id %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <h4 class="text-dark mb-3">Enter Information : </h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Job Name</label>
+                                            <input type="text" name="jobname" class="form-control resume" placeholder="" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Company Name</label>
+                                            <input  type="text" name="company_name" class="form-control resume" placeholder="" value="{{comp.firstname}} {{comp.lastname}}" readonly>
+                                        </div>
+                                    </div>
+    
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Company Email</label>
+                                            <input  type="email" name="company_email" class="form-control resume" value="{{request.session.email}}" readonly >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Phone Number</label>
+                                            <input id="number" name="contact" type="text" class="form-control resume" placeholder="" value="{{comp.contact}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Company Website</label>
+                                            <input id="number" name="company_website" type="text" class="form-control resume" placeholder="" value="{{comp.website}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Location</label>
+                                            <input id="number" name="location" type="text" class="form-control resume" placeholder="" value="{{comp.address}} {{comp.state}} {{comp.country}}">
+                                        </div>
+                                    </div>
+    
+                                </div>
+
+                                
+                                <div class="row mt-5">
+                                    <div class="col-12">
+                                        <h5 class="text-dark">Job Context </h5>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group app-label">
+                                            <textarea id="address" rows="4" name="job_context" class="form-control resume" placeholder="" value=""></textarea>
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-12">
+                                        <h5 class="text-dark">Responsibilities </h5>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group app-label">
+                                            <textarea id="address" rows="4" name="responsibilities" class="form-control resume" placeholder="" value=""></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-12">
+                                        <h5 class="text-dark">Qualification</h5>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group app-label">
+                                            <textarea id="address" rows="4" name="qualification" class="form-control resume" placeholder="" value=""></textarea>
+                                        </div>
+                                    </div> 
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Job Position</label>
+                                            <input name="job_position" type="text" class="form-control resume" placeholder="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Employeement Status</label>
+                                            <input name="employement_status" type="text" class="form-control resume" placeholder="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Experience</label>
+                                            <input name="experience" type="text" class="form-control resume" placeholder="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Vacancy</label>
+                                            <input  name="vacancy" type="text" class="form-control resume" placeholder="" value="">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Salary </label>
+                                            <input  name="salary" type="text" class="form-control resume" placeholder="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Application Deadline</label>
+                                            <input id="" name="apply_deadline" type="date" class="form-control resume" placeholder="" value="" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <h1>   </h1>
+
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item">
+                                                <div class="input-group mt-2 mb-2">
+                                                    <div class="custom-file">
+                                                        <label class="text-muted">Uplaod Logo Here :     </label>
+                                                        <input type="file" name="job_logo" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                                        <label class="custom-file-label rounded"><i class="mdi mdi-cloud-upload mr-1"></i></label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+    
+                                <div class="row">
+                                    <div class="col-lg-12 mt-2">
+                                        <button><a class="btn btn-primary">Save</a></button>   
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,264 @@
+{% extends "app/base1.html" %}
+{% block content %}
+    
+    <!-- Start home -->
+    <section class="bg-half page-next-level"> 
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="text-center text-white">
+                        <h4 class="text-uppercase title mb-4">{{request.session.firstname}} {{request.session.lastname}}'s Profile</h4>
+                        <ul class="page-next d-inline-block mb-0">
+                            <li><a href="{% url 'index' %}" class="text-uppercase font-weight-bold">Home</a></li>
+                            <li>
+                                <span class="text-uppercase text-white font-weight-bold">Edit Profile</span> 
+                            </li> 
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end home -->
+
+    <!-- Candidate Profile Start -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="rounded shadow bg-white p-4">
+                        <div class="custom-form">
+                            <div id="message3"></div>
+                            <form  class="contact-form" method="POST" action="{% url 'updateprofile' pk=request.session.id %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <h4 class="text-dark mb-3">Edit Profile :</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">First Name</label>
+                                            <input type="text" name="firstname" class="form-control resume" placeholder="" value="{{can.firstname}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Last Name</label>
+                                            <input  type="text" name="lastname" class="form-control resume" placeholder="" value="{{can.lastname}}">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Email</label>
+                                            <input  type="email" name="email" class="form-control resume" value="{{user.email}}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Phone Number</label>
+                                            <input id="number" name="contact" type="text" class="form-control resume" placeholder="I.e. - +880" value="{{can.contact}}">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Date of Birth</label>
+                                            <input id="" name="dob" type="date" class="form-control resume" placeholder="" value="{{can.dob}}" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Gender</label>
+                                            <div class="form-button">
+                                                <select class="nice-select rounded" name="gender" value="{{can.gender}}">
+                                                    <option data-display="Gender">Gender</option>
+                                                    <option >Male</option>
+                                                    <option >Female</option>
+                                                    <option >Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Maritual Status :</label>
+                                            <div class="form-button">
+                                                <select class="nice-select rounded" name="maritual_status" value="{{can.maritual_status}}">
+                                                    <option data-display="Maritual Status">Maritual Status</option>
+                                                    <option >Single</option>
+                                                    <option >Married</option>
+                                                    <option >Divorced</option>
+                                                    <option >Others</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Protfolio :</label>
+                                            <input id="" type="text" name="portfolio" class="form-control resume" placeholder="l.e - khalidswe.com" value="{{can.portfolio}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Address</label>
+                                            <input id="" type="text" name="address" class="form-control resume" placeholder="I.e. - 19, Kallayanpur, Mirpur" value="{{can.address}}">
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">State</label>
+                                            <input name="state" type="text" class="form-control resume" placeholder="I.e. - Mirpur" value="{{can.state}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">City</label>
+                                            <input  name="city" type="text" class="form-control resume" placeholder="I.e. - Dhaka" value="{{can.city}}">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Country</label>
+                                            <input  name="country" type="text" class="form-control resume" placeholder="I.e. - Bangladesh" value="{{can.country}}">
+                                        </div>
+                                    </div>
+                                </div>                    
+                                
+                                <div class="row mt-5">
+                                    <div class="col-12">
+                                        <h5 class="text-dark">Educational Information :</h5>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group app-label">
+                                                    <label class="text-muted">University/College</label>
+                                                    <input id="university/college" name="uni_college1" type="text" class="form-control resume" placeholder="" value="{{can.uni_college1}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group app-label">
+                                                    <label class="text-muted">Major/Non-Major</label>
+                                                    <input id="major" type="text" name="major1" class="form-control resume" placeholder="l.e - CSE/SWE/CS" value="{{can.major1}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group app-label">
+                                                    <label class="text-muted">Degree/Certification</label>
+                                                    <div class="form-button">
+                                                        <select class="nice-select rounded" name="degree1" value="{{can.degree1}}">
+                                                            <option data-display="Select"></option>
+                                                            <option >Honors</option>
+                                                            <option >Masters/PhD</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    
+                                            <div class="col-md-6">
+                                                <div class="form-group app-label">
+                                                    <label class="text-muted">SCGPA</label>
+                                                    <input id="sgpa" type="text" name="sgpa1" class="form-control resume" placeholder="" value="{{can.sgpa1}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group app-label">
+                                                    <label class="text-muted">University/College</label>
+                                                    <input id="university/college" name="uni_college2" type="text" class="form-control resume" placeholder="" value="{{can.uni_college2}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group app-label">
+                                                    <label class="text-muted">Major/Non-Major</label>
+                                                    <input id="major" type="text" name="major2" class="form-control resume" placeholder="l.e - CSE/SWE/CS" value="{{can.major2}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group app-label">
+                                                    <label class="text-muted">Degree/Certification</label>
+                                                    <div class="form-button">
+                                                        <select class="nice-select rounded" name="degree2" value="{{can.degree2}}">
+                                                            <option data-display="Select"></option>
+                                                            <option >Honors</option>
+                                                            <option >Masters/PhD</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    
+                                            <div class="col-md-6">
+                                                <div class="form-group app-label">
+                                                    <label class="text-muted">SCGPA</label>
+                                                    <input id="sgpa" type="text" name="sgpa2" class="form-control resume" placeholder="" value="{{can.sgpa2}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-12">
+                                        <h5 class="text-dark">Skills :</h5>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label">
+                                            <label class="text-muted">Skills :</label>
+                                            <input id="skill" type="text" name="skill" class="form-control resume" placeholder="" value="{{can.Skills}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label">
+                                            <label class="text-muted">Additional Skills :</label>
+                                            <input id="additional_skill" name="additional_skill" type="text" class="form-control resume" placeholder="" value="{{can.additional_skill}}">
+                                        </div>
+                                    </div>  
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item">
+                                                <div class="input-group mt-2 mb-2">
+                                                    <div class="custom-file">
+                                                        <input type="file" name="image" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                                        <label class="custom-file-label rounded"><i class="mdi mdi-cloud-upload mr-1"></i> Upload Profile Picture</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-inline-item">
+                                                <h8 class="text-muted mb-0">Upload Image Only</h8>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12 mt-2">
+                                        <button><a class="btn btn-primary">Save</a></button>   
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Profile END -->
+{% endblock %}
