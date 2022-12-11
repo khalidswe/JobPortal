@@ -8,7 +8,7 @@
     <title>Job Portal</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <meta name="author" content="Themesdesign" />
+    <meta name="author" content="khalid" />
 
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
 
@@ -84,7 +84,7 @@
         <div class="container">
             <!-- Logo container-->
             <div>
-                <a href="{% url 'index' %}" class="logo">
+                <a href="{% url 'homepage' pk=request.session.id %}" class="logo">
                     <img src="{% static 'images/logo-light.png' %}" alt="" class="logo-light" height="18" />
                     <img src="{% static 'images/logo-dark.png' %}" alt="" class="logo-dark" height="18" />
                 </a>
@@ -107,7 +107,7 @@
             <div id="navigation">
                 <!-- Navigation Menu-->   
                 <ul class="navigation-menu">
-                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'homepage' pk=request.session.id %}">Home</a></li>
                     <li class="has-submenu">
                         <a href="{% url 'joblistpagecandidate' %}">Jobs</a>
                         <!-- <ul class="submenu">
@@ -157,7 +157,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="contact.html">contact</a>
+                        <a href="{% url 'aboutpage' %}">contact</a>
                     </li>
                     <li class="has-submenu">
                         <a href="javascript:void(0)"><i class="mdi mdi-account mr-2"></i>{{request.session.firstname}}  {{request.session.lastname}}</a><span class="menu-arrow"></span>
@@ -184,7 +184,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
-                    <a href="javascript:void(0)"><img src="images/logo-light.png" height="20" alt=""></a>
+                    <a href="javascript:void(0)"><img src="{% static 'images/logo-light.png' %}" height="20" alt=""></a>
                     <p class="mt-4">At vero eos et accusamus et iusto odio dignissim os ducimus qui blanditiis praesentium</p>
                     <ul class="social-icon social list-inline mb-0">
                         <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
@@ -197,25 +197,25 @@
                     <p class="text-white mb-4 footer-list-title">Company</p>
                     <ul class="list-unstyled footer-list">
                         <li><a href="{% url 'aboutpage' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> About Us</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Media & Press</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Career</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Blog</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Pricing</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Marketing</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> CEOs </a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Agencies</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Our Apps</a></li>
+                        <li><a href="{% url 'pageunderconstructions' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Media & Press</a></li>
+                        <li><a href="{% url 'pageunderconstructions' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Career</a></li>
+                        <li><a href="{% url 'pageunderconstructions' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Blog</a></li>
+                        <li><a href="{% url 'pageunderconstructions' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Pricing</a></li>
+                        <li><a href="{% url 'pageunderconstructions' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Marketing</a></li>
+                        <li><a href="{% url 'pageunderconstructions' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> CEOs </a></li>
+                        <li><a href="{% url 'pageunderconstructions' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Agencies</a></li>
+                        <li><a href="{% url 'pageunderconstructions' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Our Apps</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                     <p class="text-white mb-4 footer-list-title">Resources</p>
                     <ul class="list-unstyled footer-list">
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Support</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Privacy Policy</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Terms</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Accounting </a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> Billing</a></li>
-                        <li><a href="#" class="text-foot"><i class="mdi mdi-chevron-right"></i> F.A.Q.</a></li>
+                        <li><a href="{% url 'pageunderconstructions' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Support</a></li>
+                        <li><a href="{% url 'pageunderconstructions' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Privacy Policy</a></li>
+                        <li><a href="{% url 'pageunderconstructions' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Terms</a></li>
+                        <li><a href="{% url 'pageunderconstructions' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Accounting </a></li>
+                        <li><a href="{% url 'pageunderconstructions' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> Billing</a></li>
+                        <li><a href="{% url 'pageunderconstructions' %}" class="text-foot"><i class="mdi mdi-chevron-right"></i> F.A.Q.</a></li>
                     </ul>
                 </div>
             
@@ -232,7 +232,7 @@
     </footer>
 
     <!-- Back to top -->
-    <a href="{% url 'index' %}" class="back-to-top rounded text-center" id="back-to-top"> 
+    <a href="{% url 'homepage' pk=request.session.id %}" class="back-to-top rounded text-center" id="back-to-top"> 
         <i class="mdi mdi-chevron-up d-block"> </i> 
     </a>
     <!-- Back to top -->

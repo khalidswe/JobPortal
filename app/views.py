@@ -12,6 +12,13 @@ from django.contrib.auth import logout
 def IndexPage(request):
     return render(request,"app/index.html")
 
+def HomePage(request,pk):
+    user = UserMaster.objects.get(pk=pk)
+    
+    can = Candidate.objects.get(user_id=user)
+    return render(request,"app/homepage.html",{'user':user,'can':can})
+
+
 def SignUpPage(request):
     return render(request,"app/signup.html")
 
@@ -86,8 +93,8 @@ def OTPverify(request):
         message = "Enter Your OTP Code"
         return render(request,"app/otpverify.html",{'msg':message})
 
-def LogInPage(request):
-    return render(request,"app/login.html")
+# def LogInPage(request):
+#     return render(request,"app/login.html")
 
 def LogInUser(request):
             if request.POST['role']=="Candidate":
@@ -105,14 +112,14 @@ def LogInUser(request):
                         request.session['firstname']= can.firstname
                         request.session['lastname']=can.lastname
 
-                        return redirect('index')
+                        return render(request,"app/homepage.html",{'user':user,'can':can})
                 
                     else:
                         message = "Password doesn't Match!!"
-                        return render(request,"app/login.html",{'msg':message})
+                        return render(request,"app/index.html",{'msg':message})
                 else:
                     message = "User doesn't Exist!!"
-                    return render(request,"app/login.html",{'msg':message})
+                    return render(request,"app/index.html",{'msg':message})
             
             elif request.POST['role']=="Company":
                 email = request.POST['email']
@@ -129,17 +136,17 @@ def LogInUser(request):
                         request.session['firstname']= comp.firstname
                         request.session['lastname']=comp.lastname
 
-                        return render(request,"app/company/index.html")
+                        return render(request,"app/company/index.html",{'user':user,'comp':comp})
                 
                     else:
                         message = "Password doesn't Match!!"
-                        return render(request,"app/login.html",{'msg':message})
+                        return render(request,"app/index.html",{'msg':message})
                 else:
                     message = "User doesn't Exist!!"
-                    return render(request,"app/login.html",{'msg':message})
+                    return render(request,"app/index.html",{'msg':message})
             else:
                 message = "Select Role!!"   
-                return render(request,"app/login.html",{'msg':message})
+                return render(request,"app/index.html",{'msg':message})
 
 def ProfilePage(request,pk):
     user = UserMaster.objects.get(pk=pk)
@@ -210,7 +217,7 @@ def LogOut(request,pk):
     user = UserMaster.objects.get(pk=pk)
     logout(request)
     message = "Logged out successfully!"
-    return render(request,"app/login.html",{'msg':message})
+    return render(request,"app/index.html",{'msg':message})
 
 def AboutPage(request):
     return render(request,"app/about.html")

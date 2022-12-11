@@ -5,12 +5,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Jobya - Responsive Job Board HTML Template</title>
+        <title>Job Portal </title>
         <meta name="description" content="" />
         <meta name="keywords" content="" />
-        <meta name="author" content="Themesdesign" />
+        <meta name="author" content="khalid" />
     
-        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
     
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
@@ -121,7 +121,7 @@
                                                 </ul><!--end icon-->
                                             </div>
                                             <div class="mx-auto">
-                                                <p class="mb-0 mt-3"><small class="text-dark mr-2">Already have an account ?</small> <a href="{% url 'login' %}" class="text-dark font-weight-bold">Sign in</a></p>
+                                                <p class="mb-0 mt-3"><small class="text-dark mr-2">Already have an account ?</small> <a href="{% url 'index' %}" class="text-dark font-weight-bold">Sign in</a></p>
                                             </div>
                                         </div>
                                     </form>
