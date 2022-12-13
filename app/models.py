@@ -78,3 +78,23 @@ class JobDetails(models.Model):
     apply_deadline = models.DateField(max_length=50) 
     job_logo = models.ImageField(upload_to="app/img/jobpostlogo")
 
+
+class AppliedJob(models.Model):
+    candidate = models.ForeignKey(Candidate,on_delete=models.CASCADE)
+    job = models.ForeignKey(JobDetails,on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    jobname = models.CharField(max_length=300)
+    email = models.EmailField(max_length=100)
+    contact = models.CharField(max_length=100)
+    address = models.CharField(max_length=500)
+    portfolio = models.CharField(max_length=100)
+    uni_name = models.CharField(max_length=500)
+    major = models.CharField(max_length=100)
+    degree = models.CharField(max_length=100)
+    sgpa = models.CharField(max_length=20)
+    skill = models.CharField(max_length=500)
+    additional_skill = models.CharField(max_length=500)
+    cv = models.FileField(upload_to="app/cv")
+
+
+#class AdminDB(models.Model):

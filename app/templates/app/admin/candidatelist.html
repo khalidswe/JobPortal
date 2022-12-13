@@ -1,0 +1,58 @@
+{% extends "app/admin/base1.html" %}
+{% block content %}
+{% load static %} 
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        {% if msg %}
+
+                            <h4 style="color:green">{{msg}}</h4>
+
+                        {% endif %}
+                        <h1 class="mt-4">Candidate List</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="{% url 'adminindex'  %}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Candidate List</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Candidate List Table
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Email</th>
+                                            <th>Role</th>
+                                            <th>Created at</th>
+                                            <th>Updated at</th>
+                                            <th>Active</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    {% if all_candidate %}
+                                    <tbody>
+                                        {% for i in all_candidate %}
+                                        <tr>
+                                            <td>{{i.email}}</td>
+                                            <td>{{i.role}}</td>
+                                            <td>{{i.is_created}}</td>
+                                            <td>{{i.is_updated}}</td>
+                                            <td>{{i.is_active}}</td>
+                                            <td>
+                                                <form action="{% url 'candidatedelete' pk=i.id %}" method="post">
+                                                    {% csrf_token %}
+                                                    <input type="submit" value="Delete">
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    {% endif %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+{% endblock %}

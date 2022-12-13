@@ -85,7 +85,7 @@ def OTPverify(request):
     if user:
         if user.otp == otp:
             message = "OTP verified Successfully!!"
-            return render(request,"app/login.html",{'msg':message})
+            return render(request,"app/index.html",{'msg':message})
         else:
             message = "OTP is incorrect!!"
             return render(request,"app/otpverify.html",{'msg':message})
@@ -231,10 +231,47 @@ def JobListPageCandidate(request):
     return render(request,"app/joblist_candidate.html",{'all_jobs':all_jobs})
 
 def JobDetailsPage(request):
-    comp = Company.objects.all()
-    job = JobDetails.objects.all()
+    job = JobDetails.objects.get(id=3)
     
-    return render(request,"app/job_details.html",{'job':job,'comp':comp})
+    return render(request,"app/job_details.html",{'job':job})
+
+def ApplyJobPage(request,pk):
+    user = request.session['id']
+
+    if user :
+        cand = Candidate.objects.get(id=user)
+        job = JobDetails.objects.get(id=pk)
+    return  render(request,"app/apply_job.html",{'user':user,'cand':cand,'job':job})
+
+
+def Applyjob(request,pk):
+    user = request.session['id']
+
+    if user: 
+        cand = Candidate.objects.get(user_id=user)
+        job = JobDetails.objects.get(id=pk)
+
+        name = request.POST['name']
+        jobname = request.POST['jobname']
+        contact = request.POST['contact']
+        address = request.POST['address']
+        portfolio = request.POST['portfolio']
+        uni_name = request.POST['uni_name']
+        major = request.POST['major']
+        degree = request.POST['degree']
+        sgpa = request.POST['sgpa']
+        skill = request.POST['skill']
+        additional_skill = request.POST['additional_skill']
+        cv = request.FILES['cv']
+
+        newapply = AppliedJob.objects.create(candidate=cand,job=job,name=name,jobname=jobname,
+        contact=contact,address=address,portfolio=portfolio,uni_name=uni_name,major=major,
+        degree=degree,sgpa=sgpa,skill=skill,additional_skill=additional_skill,cv=cv)
+
+        message = "Job Applied Successfully"
+
+        return render(request,"app/joblist_candidate.html",{'msg':message})
+
 
 ####### Company side #######
 
@@ -245,15 +282,12 @@ def CompanyIndexPage(request,pk):
 
 
 def JobListPage(request,pk):
-    user = UserMaster.objects.get(pk=12)
+    user = UserMaster.objects.filter(id=pk)
     
-    comp = Company.objects.get(user_id=user)
-    job = JobDetails.objects.filter(company_id=comp)
-    if job:
-        all_jobs = JobDetails.objects.all()
-        return render(request,"app/company/joblist.html",{'all_jobs':all_jobs})
-    # else:
-    #     return render(request,"app/company/joblist.html")
+    if user:
+        comp = Company.objects.all()
+        job = JobDetails.objects.all()
+        return render(request,"app/company/joblist.html",{'user':user,'comp':comp,'job':job})
 
 def PostAJobPage(request,pk):
     user = UserMaster.objects.get(id=pk)
@@ -291,3 +325,72 @@ def PostAJob(request,pk):
         message = "Job Posted Successfully"
 
         return render(request,"app/company/joblist.html",{'msg':message})
+
+def AppliedJobList(request,pk):
+    user = UserMaster.objects.filter(id=pk)
+    
+    if user:
+        comp = Company.objects.all()
+        job = AppliedJob.objects.all()
+        return render(request,"app/company/appliedjoblist.html",{'user':user,'comp':comp,'job':job})
+
+
+####### Admin side #######
+
+# def AdminRegister(request):
+#     return render(request,"app/admin/register.html")
+
+def AdminLogInPage(request):
+    return render(request,"app/admin/login.html")
+
+def LogOutAdmin(request):
+    logout(request)
+    message = "Logged out successfully!"
+    return render(request,"app/admin/login.html",{'msg':message}) 
+
+def AdminLogIn(request):
+    username = request.POST['username']
+    password = request.POST['password']
+
+    if username == 'admin' and password == 'admin':
+        request.session['username'] = username
+        request.session['password'] = password
+        return redirect('adminindex')
+    else:
+        message = "usename and password not match"
+        return render(request,"app/admin/login.html",{'mssg':message})
+
+def AdminIndex(request):
+    if 'username' in request.session and 'password' in request.session:
+        return render(request,"app/admin/index.html")
+
+def CadidateList(request):
+    all_candidate = UserMaster.objects.filter(role='Candidate')
+    return render(request,"app/admin/candidatelist.html",{'all_candidate':all_candidate})
+
+def CompanyList(request):
+    all_company = UserMaster.objects.filter(role='Company')
+    return render(request,"app/admin/companylist.html",{'all_company':all_company})
+
+
+def  UserDelete(request,pk):
+    user = UserMaster.objects.get(pk=pk)
+    user.delete()
+    return redirect('candidatelist')
+
+def VerifyCompanyPage(request,pk):
+    comp = UserMaster.objects.get(pk=pk)
+    if comp:
+        return render(request,"app/admin/verifycompany.html",{'comp':comp})
+
+def VerifyCompany(request,pk):
+    comp = UserMaster.objects.get(pk=pk)
+    if comp:
+        comp.is_verified = request.POST['verify']
+        comp.save()
+        return redirect('companylist')
+
+def  CompanyDelete(request,pk):
+    comp = UserMaster.objects.get(pk=pk)
+    comp.delete()
+    return redirect('companylist')

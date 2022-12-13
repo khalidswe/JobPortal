@@ -7,24 +7,22 @@
     
     <!-- JOB DETAILS START -->
     {% if job %}
-    {% for i in job %}
     <section class="section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="text-dark mb-3">{{i.jobname}}</h4>
+                    <h4 class="text-dark mb-3">{{job.jobname}}</h4>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-lg-8 col-md-7">
                     <div class="job-detail border rounded p-4">
                         <div class="job-detail-content">
-                            <img src="{{i.job_logo.url}}" width="100" height="100" alt="" class="img-fluid float-left mr-md-3 mr-2 mx-auto d-block">
+                            <img src="{{job.job_logo.url}}" width="100" height="100" alt="" class="img-fluid float-left mr-md-3 mr-2 mx-auto d-block">
                             <div class="job-detail-com-desc overflow-hidden d-block">
-                                <h4 class="mb-2"><a href="#" class="text-dark">{{i.jobname}}</a></h4>
-                                <p class="text-muted mb-0"><i class="mdi mdi-link-variant mr-2"></i>{{i.company_name}}</p>
-                                <p class="text-muted mb-0"><i class="mdi mdi-map-marker mr-2"></i>{{i.location}}</p>
+                                <h4 class="mb-2"><a href="#" class="text-dark">{{job.jobname}}</a></h4>
+                                <p class="text-muted mb-0"><i class="mdi mdi-link-variant mr-2"></i>{{job.company_name}}</p>
+                                <p class="text-muted mb-0"><i class="mdi mdi-map-marker mr-2"></i>{{job.location}}</p>
                             </div>
                         </div>
 
@@ -45,7 +43,7 @@
                         <div class="col-lg-12">
                             <div class="job-detail border rounded mt-2 p-4">
                                 <div class="job-detail-desc">
-                                    <p class="text-muted mb-3">{{i.job_context}}</p>
+                                    <p class="text-muted mb-3">{{job.job_context}}</p>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +63,7 @@
                                         <div class="float-left mr-3">
                                             <i class="mdi mdi-send text-primary"></i>
                                         </div>
-                                        <p class="text-muted mb-2">{{i.qualification}}</p>
+                                        <p class="text-muted mb-2">{{job.qualification}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +84,7 @@
                                         <div class="float-left mr-3">
                                             <i class="mdi mdi-send text-primary"></i>
                                         </div>
-                                        <p class="text-muted mb-2">{{i.responsibilities}}</p>
+                                        <p class="text-muted mb-2">{{job.responsibilities}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -103,28 +101,28 @@
                                 <div class="float-left mr-2">
                                     <i class="mdi mdi-bank text-muted"></i>
                                 </div>
-                                <p class="text-muted mb-2">: {{i.location}}</p>
+                                <p class="text-muted mb-2">: {{job.location}}</p>
                             </div>
 
                             <div class="job-details-desc-item">
                                 <div class="float-left mr-2">
                                     <i class="mdi mdi-email text-muted"></i>
                                 </div>
-                                <p class="text-muted mb-2">: {{i.company_email}}</p>
+                                <p class="text-muted mb-2">: {{job.company_email}}</p>
                             </div>
 
                             <div class="job-details-desc-item">
                                 <div class="float-left mr-2">
                                     <i class="mdi mdi-web text-muted"></i>
                                 </div>
-                                <p class="text-muted mb-2">: {{i.company_website}}</p>
+                                <p class="text-muted mb-2">: {{job.company_website}}</p>
                             </div>
 
                             <div class="job-details-desc-item">
                                 <div class="float-left mr-2">
                                     <i class="mdi mdi-cellphone-iphone text-muted"></i>
                                 </div>
-                                <p class="text-muted mb-2">: 1987 6543 21</p>
+                                <p class="text-muted mb-2">: {{job.contact}}</p>
                             </div>
 
                             <div class="job-details-desc-item">
@@ -217,13 +215,12 @@
                     </div>
 
                     <div class="job-detail border rounded mt-4">
-                        <a href="#" class="btn btn-primary btn-block">Apply For Job</a>
+                        <a href="{% url 'applyjobpage' pk=job.id %}" class="btn btn-primary btn-block">Apply For Job</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- JOB DETAILS END -->
-    {% endfor %}
 {% endif %}
 {% endblock %}

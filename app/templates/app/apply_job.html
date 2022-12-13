@@ -1,0 +1,176 @@
+{% extends "app/base1.html" %}
+{% block content %}
+    
+    <!-- Start home -->
+    <section class="bg-half page-next-level"> 
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="text-center text-white">
+                        <h4 class="text-uppercase title mb-4">Apply Job</h4>
+                        <ul class="page-next d-inline-block mb-0">
+                            <li><a href="{% url 'homepage' pk=request.session.id %}" class="text-uppercase font-weight-bold">Home</a></li>
+                            <li>
+                                <span class="text-uppercase text-white font-weight-bold">Apply </span> 
+                            </li> 
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end home -->
+
+    <!-- Candidate Profile Start -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="rounded shadow bg-white p-4">
+                        <div class="custom-form">
+                            <div id="message3"></div>
+                            {% if user %}
+                            {% if cand %}
+                            {% if job %}
+                            <form  class="contact-form" method="POST" action="{% url 'applyjob' pk=job.id %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <h4 class="text-dark mb-3">Apply :</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Name</label>
+                                            <input type="text" name="name" class="form-control resume" placeholder="" value="{{cand.firstname}} {{cand.lastname}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Job Name</label>
+                                            <input  type="text" name="jobname" class="form-control resume" placeholder="" value="{{job.jobname}}">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Email</label>
+                                            <input  type="email" name="email" class="form-control resume" value="{{request.session.email}}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Phone Number</label>
+                                            <input id="number" name="contact" type="text" class="form-control resume" placeholder="" value="{{cand.contact}}">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Address</label>
+                                            <input id="" type="text" name="address" class="form-control resume" placeholder="" value="{{cand.address}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label mt-2">
+                                            <label class="text-muted">Protfolio :</label>
+                                            <input  name="portfolio" type="text" class="form-control resume" placeholder="I.e. - Bangladesh" value="{{cand.country}}">
+                                        </div>
+                                    </div>
+                                </div>                    
+                                
+                                <div class="row mt-5">
+                                    <div class="col-12">
+                                        <h5 class="text-dark">Educational Information :</h5>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group app-label">
+                                                    <label class="text-muted">University/College</label>
+                                                    <input id="university/college" name="uni_name" type="text" class="form-control resume" placeholder="" value="{{cand.uni_college1}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group app-label">
+                                                    <label class="text-muted">Major/Non-Major</label>
+                                                    <input id="major" type="text" name="major" class="form-control resume" placeholder="l.e - CSE/SWE/CS" value="{{cand.major1}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group app-label">
+                                                    <label class="text-muted">Degree/Certification</label>
+                                                    <div class="form-button">
+                                                        <select class="nice-select rounded" name="degree" value="{{cand.degree1}}">
+                                                            <option data-display="Select"></option>
+                                                            <option >Honors</option>
+                                                            <option >Masters/PhD</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    
+                                            <div class="col-md-6">
+                                                <div class="form-group app-label">
+                                                    <label class="text-muted">SCGPA</label>
+                                                    <input id="sgpa" type="text" name="sgpa" class="form-control resume" placeholder="" value="{{cand.sgpa1}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-12">
+                                        <h5 class="text-dark">Skills :</h5>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label">
+                                            <label class="text-muted">Skills :</label>
+                                            <input id="skill" type="text" name="skill" class="form-control resume" placeholder="" value="{{cand.skill}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group app-label">
+                                            <label class="text-muted">Additional Skills :</label>
+                                            <input id="additional_skill" name="additional_skill" type="text" class="form-control resume" placeholder="" value="{{cand.additional_skill}}">
+                                        </div>
+                                    </div>  
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item">
+                                                <div class="input-group mt-2 mb-2">
+                                                    <div class="custom-file">
+                                                        <input type="file" name="cv" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                                        <label class="custom-file-label rounded"><i class="mdi mdi-cloud-upload mr-1"></i> Upload CV</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-inline-item">
+                                                <h8 class="text-muted mb-0">Upload pdf Only</h8>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12 mt-2">
+                                        <button><a class="btn btn-primary">Save</a></button>   
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% endif %}
+                            {% endif %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Profile END -->
+{% endblock %}

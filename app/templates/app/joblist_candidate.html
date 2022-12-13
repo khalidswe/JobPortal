@@ -464,6 +464,9 @@
                             </div>
                         </div>
                     </div>
+                    {% if msg %}
+                        <h4 style=color:green>{{msg}}</h4>
+                    {% endif %}
                     {% if all_jobs %}
                     {% for i in all_jobs %}
                     <div class="row">
@@ -497,7 +500,7 @@
                                                 <span class="badge badge-success">{{i.employement_status}}</span>
 
                                                 <div class="mt-3">
-                                                    <a href="{{ 'jobdetailspage' }}" class="btn btn-sm btn-primary">Details</a>
+                                                    <a href="{% url 'jobdetailspage' %}" class="btn btn-sm btn-primary">Details</a>
                                                 </div>
                                             </div>
                                         </div>

@@ -17,34 +17,38 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Posted Job DataTable
+                                Applicant DataTable
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
+                                            <th>Applicant Name</th>
                                             <th>Job Name</th>
-                                            <th>Position</th>
-                                            <th>Location</th>
-                                            <th>Vacancy</th>
-                                            <th>Employement Status</th>
-                                            <th>Experience</th>
-                                            <th>Salary</th>
-                                            <th>Application Deadline</th>
+                                            <th>Email</th>
+                                            <th>Contact</th>
+                                            <th>Address</th>
+                                            <th>Portfolio</th>
+                                            <th>University</th>
+                                            <th>Major</th>
+                                            <th>Skills</th>
+                                            <th>CV</th>
                                         </tr>
                                     </thead>
                                     {% if job %}
                                     <tbody>
                                         {% for i in job %}
                                         <tr>
+                                            <td>{{i.name}}</td>
                                             <td>{{i.jobname}}</td>
-                                            <td>{{i.job_position}}</td>
-                                            <td>{{i.location}}</td>
-                                            <td>{{i.vacancy}}</td>
-                                            <td>{{i.employement_status}}</td>
-                                            <td>{{i.experience}}</td>
-                                            <td>{{i.salary}}</td>
-                                            <td>{{i.apply_deadline}}</td>
+                                            <td>{{i.email}}</td>
+                                            <td>{{i.contact}}</td>
+                                            <td>{{i.address}}</td>
+                                            <td>{{i.portfolio}}</td>
+                                            <td>{{i.uni_name}}</td>
+                                            <td>{{i.major}}</td>
+                                            <td>{{i.skill}}</td>
+                                            <td>{{i.cv}}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
