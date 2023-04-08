@@ -88,10 +88,10 @@ def OTPverify(request):
             return render(request,"app/index.html",{'msg':message})
         else:
             message = "OTP is incorrect!!"
-            return render(request,"app/otpverify.html",{'msg':message})
+            return render(request,"app/otpverify.html",{'msg':message,'email':email})
     else:
         message = "Enter Your OTP Code"
-        return render(request,"app/otpverify.html",{'msg':message})
+        return render(request,"app/otpverify.html",{'msg':message,'email':email})
 
 # def LogInPage(request):
 #     return render(request,"app/login.html")
